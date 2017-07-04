@@ -8,16 +8,19 @@ def count_games(file_name):
         return number
 
 def decide(file_name,year):
-    with open(file_name,"r") as game_stat:
-        game_stat_list=[line.strip().split("\t") for line in game_stat]
-       # print (game_stat_list)
-        for game in game_stat_list:
-            print(game)
-            if str(game[2])==str(year):
-                return True
-            else:
-                return False
-
+    import csv
+    years = [x[2] for x in csv.reader(open(file_name,'r'),delimiter='\t')]
+    for game in years :
+        if str(game)==str(year):
+            return True
+    return False
+    
+def get_latest(file_name):
+    import csv 
+    titles = [x[0] for x in csv.reader(open(file_name,'r'),delimiter='\t')]
+    years = [x[2] for x in csv.reader(open(file_name,'r'),delimiter='\t')]
+    latest_game_index=int(years.index(max(years)))
+    return titles[latest_game_index]
 
 
 
@@ -29,4 +32,5 @@ def decide(file_name,year):
 
 stat="game_stat.txt"
 print(count_games(stat))
-print (decide(stat,2000))
+print (decide(stat,1997))
+get_latest(stat)
