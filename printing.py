@@ -1,5 +1,5 @@
 import reports
-# Printing functions
+
 stat = "game_stat.txt"
 print(reports.count_games(stat))
 print(reports.decide(stat, 1997))

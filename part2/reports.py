@@ -1,4 +1,5 @@
 import csv
+import operator
 
 
 def load_list(file_name, index):
@@ -15,39 +16,34 @@ def load_list(file_name, index):
 
 def get_most_played(file_name):
     titles = load_list(file_name, 0)
-    copies = load_list(file_name, 1)
-    copies = [float(x) for x in copies]
+    copies = [float(x) for x in load_list(file_name, 1)]
     most_copies_index = copies.index(max((copies)))
     return str(titles[most_copies_index])
 #   2
 
 
 def sum_sold(file_name):
-    copies = load_list(file_name, 1)
-    copies = [float(x) for x in copies]
+    copies = [float(x) for x in load_list(file_name, 1)]
     sum_of_copies = sum(copies)
     return sum_of_copies
 #   3
 
 
 def get_selling_avg(file_name):
-    copies = load_list(file_name, 1)
-    copies = [float(x) for x in copies]
+    copies = [float(x) for x in load_list(file_name, 1)]
     avg_sell = sum(copies) / len(copies)
     return avg_sell
 #   4
 
 
 def count_longest_title(file_name):
-    titles = load_list(file_name, 0)
-    count_title = [len(x) for x in titles]
+    count_title = [len(x) for x in load_list(file_name, 0)]
     return max(count_title)
 #   5
 
 
 def get_date_avg(file_name):
-    years = load_list(file_name, 2)
-    years = [float(x) for x in years]
+    years = [float(x) for x in load_list(file_name, 2)]
     avg_years = sum(years) / len(years)
     return round(avg_years)
 #   6
@@ -55,10 +51,8 @@ def get_date_avg(file_name):
 
 def get_game(file_name, title):
     titles = load_list(file_name, 0)
-    copies = load_list(file_name, 1)
-    copies = [float(x) for x in copies]
-    years = load_list(file_name, 2)
-    years = [int(x) for x in years]
+    copies = [float(x) for x in load_list(file_name, 1)]
+    years = [int(x) for x in load_list(file_name, 2)]
     genre = load_list(file_name, 3)
     publisher = load_list(file_name, 4)
     while True:
@@ -84,11 +78,9 @@ def count_grouped_by_genre(file_name):
 
 
 def get_date_ordered(file_name):
-    import operator
     game_dict = {}
-    years = load_list(file_name, 2)
     titles = load_list(file_name, 0)
-    years = [int(x)for x in years]
+    years = [int(x)for x in load_list(file_name, 2)]
     for num, title in enumerate(titles):
         game_dict[title] = years[num]
     sorted_game_list = sorted(game_dict.items(), key=lambda x: (-x[1], x[0]))
