@@ -3,7 +3,7 @@ import csv
 
 def load_list(file_name, index):
     properties = []
-    reader = open(file_name, "r")
+    reader = open(file_name.strip(), "r")
     game_stats = csv.reader(reader, delimiter="\t")
     for row in game_stats:
         properties.append(row[index])
