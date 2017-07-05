@@ -1,5 +1,4 @@
 import csv
-# Report functions
 
 
 def load_list(file_name, index):
@@ -64,8 +63,8 @@ def get_game(file_name, title):
     publisher = load_list(file_name, 4)
     while True:
         try:
-            game_index = titles.index(title)
-            properties = [titles[game_index], copies[game_index], years[game_index], genre[game_index], publisher[game_index]]
+            g_index = titles.index(title)
+            properties = [titles[g_index], copies[g_index], years[g_index], genre[g_index], publisher[g_index]]
             return properties
         except ValueError:
             return "Game not found"
