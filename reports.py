@@ -59,6 +59,7 @@ def get_line_number_by_title(file_name, title):
             line_number = titles.index(title) + 1
             return line_number
         except ValueError:
+            return "Title not found"
             break
 # 6
 
@@ -90,7 +91,6 @@ def when_was_top_sold_fps(file_name):
             top_fps_index = copies.index(max(copies))
             return years[top_fps_index]
         except ValueError:
-            print("Genre not found")
-            break
+            return "Genre not found"
         finally:
             data.close()
